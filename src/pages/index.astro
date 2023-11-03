@@ -1,16 +1,10 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
+---
+import BaseLayout from "../layouts/base-layout.astro";
+import { Greeting } from "../components/gretting.tsx";
+---
 
-	<body>
-        <a href="/">Home</a>
-        <a href="/about">About Me</a>
-        <a href="/blog">Blog</a>
-
-		<h1>My Astro Site</h1>
-	</body>
-</html>
+<BaseLayout pageTitle="Home page">
+    <h2>My awesome blog subtitle</h2>
+    <Greeting messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+    <Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
+</BaseLayout>

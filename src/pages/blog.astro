@@ -1,16 +1,15 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-    <body>
-        <a href="/">Home</a>
-        <a href="/about">About Me</a>
-        <a href="/blog">Blog</a>
+---
+import BlogPost from "../components/blog-post.astro";
+import BaseLayout from "../layouts/base-layout.astro";
 
-        <h1>My Astro Learning Blog</h1>
-        <p>This is where I will post about my journey learning Astro.</p>
-    </body>
-</html>
+const allPosts = await Astro.glob("../pages/posts/*.md");
+const pageTitle: string = "My Astro Learning Blog";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <p>This is where I will post about my journey learning Astro.</p>
+
+    <ul>
+        {allPosts.map((post) => <BlogPost {post} />)}
+    </ul>
+</BaseLayout>
